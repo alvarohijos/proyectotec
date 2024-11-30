@@ -79,5 +79,34 @@ public class ProyectoServicio {
             return "No se encontró un proyecto con el ID: " + id + " para eliminar.";
         }
     }
+
+    public Proyecto actualizarParcial(Integer id, Proyecto proyectoParcial) {
+        Proyecto proyectoExistente = obtenerPorId(id); // Lanza excepción si no se encuentra
+
+        if (proyectoParcial.getNombre() != null) {
+            proyectoExistente.setNombre(proyectoParcial.getNombre());
+        }
+        if (proyectoParcial.getDescripcion() != null) {
+            proyectoExistente.setDescripcion(proyectoParcial.getDescripcion());
+        }
+        if (proyectoParcial.getEstado() != null) {
+            proyectoExistente.setEstado(proyectoParcial.getEstado());
+        }
+        if (proyectoParcial.getFechaInicio() != null) {
+            proyectoExistente.setFechaInicio(proyectoParcial.getFechaInicio());
+        }
+        if (proyectoParcial.getFechaFin() != null) {
+            proyectoExistente.setFechaFin(proyectoParcial.getFechaFin());
+        }
+        if (proyectoParcial.getUbicacion() != null) {
+            proyectoExistente.setUbicacion(proyectoParcial.getUbicacion());
+        }
+        if (proyectoParcial.getOrganizacion() != null) {
+            proyectoExistente.setOrganizacion(proyectoParcial.getOrganizacion());
+        }
+
+        return proyectoRepositorio.save(proyectoExistente);
+    }
+
 }
 

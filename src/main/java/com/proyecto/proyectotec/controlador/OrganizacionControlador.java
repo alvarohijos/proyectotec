@@ -67,4 +67,18 @@ public class OrganizacionControlador {
                 .body("Registro eliminado exitosamente");
     }
 
+    @PatchMapping("/{id}")
+    public ResponseEntity<Organizacion> patchOrganizacion(
+            @PathVariable Integer id,
+            @RequestBody Organizacion organizacionParcial) {
+        try {
+            Organizacion organizacionActualizada = organizacionServicio.actualizarParcial(id, organizacionParcial);
+            return ResponseEntity.ok(organizacionActualizada);
+        } catch (RuntimeException e) {
+            return ResponseEntity.status(HttpStatus.NOT_FOUND).body(null);
+        }
+    }
+
+
+
 }

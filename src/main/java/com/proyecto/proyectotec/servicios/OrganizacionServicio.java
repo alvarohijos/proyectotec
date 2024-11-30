@@ -48,5 +48,27 @@ public class OrganizacionServicio {
     public void eliminar(Integer id) {
         organizacionRepositorio.deleteById(id);
     }
+
+    public Organizacion actualizarParcial(Integer id, Organizacion organizacionParcial) {
+        Organizacion organizacionExistente = organizacionRepositorio.findById(id)
+                .orElseThrow(() -> new RuntimeException("Organización no encontrada con ID: " + id));
+
+        if (organizacionParcial.getNombre() != null) {
+            organizacionExistente.setNombre(organizacionParcial.getNombre());
+        }
+        if (organizacionParcial.getDescripcion() != null) {
+            organizacionExistente.setDescripcion(organizacionParcial.getDescripcion());
+        }
+        if (organizacionParcial.getContacto() != null) {
+            organizacionExistente.setContacto(organizacionParcial.getContacto());
+        }
+        if (organizacionParcial.getDireccion() != null) {
+            organizacionExistente.setDireccion(organizacionParcial.getDireccion());
+        }
+
+        return organizacionRepositorio.save(organizacionExistente);
+    }
+
+
 }
 

@@ -62,5 +62,18 @@ public class ProyectoControlador {
         }
     }
 
+    @PatchMapping("/{id}")
+    public ResponseEntity<Proyecto> actualizarParcialProyecto(@PathVariable Integer id, @RequestBody Proyecto proyectoParcial) {
+        try {
+            Proyecto proyectoActualizado = proyectoServicio.actualizarParcial(id, proyectoParcial);
+            return ResponseEntity.ok(proyectoActualizado);
+        } catch (RuntimeException e) {
+            return ResponseEntity.status(HttpStatus.NOT_FOUND).body(null);
+        } catch (Exception e) {
+            return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body(null);
+        }
+    }
+
+
 }
 
