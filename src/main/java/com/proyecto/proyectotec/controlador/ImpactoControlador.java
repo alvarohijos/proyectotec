@@ -11,6 +11,7 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 
 @RestController
+@CrossOrigin(origins = "http://localhost:5173") // Permite solicitudes desde tu cliente Vue
 @RequestMapping("/api/impactos")
 public class ImpactoControlador {
 

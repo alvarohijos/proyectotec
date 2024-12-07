@@ -13,6 +13,7 @@ import java.util.List;
 
 
 @RestController
+@CrossOrigin(origins = "http://localhost:5173") // Permite solicitudes desde tu cliente Vue
 @RequestMapping("/api/organizaciones")
 public class OrganizacionControlador {
 
@@ -32,13 +33,23 @@ public class OrganizacionControlador {
     }
 
     // Obtener una organización por ID
-    @GetMapping("/{id}")
-    public ResponseEntity<Organizacion> obtenerOrganizacion(@PathVariable Integer id) {
-        return organizacionServicio.obtenerPorId(id)
-                .map(ResponseEntity::ok)
-                .orElse(ResponseEntity.status(HttpStatus.NOT_FOUND).build());
-    }
+//    @GetMapping("/{id}")
+//    public ResponseEntity<Organizacion> obtenerOrganizacion(@PathVariable Integer id) {
+//        return organizacionServicio.obtenerPorId(id)
+//                .map(ResponseEntity::ok)
+//                .orElse(ResponseEntity.status(HttpStatus.NOT_FOUND).build());
+//    }
 
+    @GetMapping("/{id}")
+    public ResponseEntity<Organizacion> obtenerOrganizacionPorId(@PathVariable Integer id) {
+        Optional<Organizacion> organizacionOpt = organizacionServicio.obtenerPorId(id);
+        if (organizacionOpt.isPresent()) {
+            return ResponseEntity.ok(organizacionOpt.get());
+        } else {
+            return ResponseEntity.status(HttpStatus.NOT_FOUND)
+                    .body(null);
+        }
+    }
 
     // Actualizar una organización
     @PutMapping("/{id}")

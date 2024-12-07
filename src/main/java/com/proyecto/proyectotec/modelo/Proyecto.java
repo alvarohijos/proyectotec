@@ -39,7 +39,7 @@ public class Proyecto {
     public Proyecto() {
     }
 
-    // Constructor completo para inicializar Proyecto
+    // Constructor completo para inicializar Proyecto de la aplicacion
     public Proyecto(String nombre, String descripcion, String estado, Date fechaInicio, Date fechaFin, String ubicacion, Organizacion organizacion) {
         this.nombre = nombre;
         this.descripcion = descripcion;
