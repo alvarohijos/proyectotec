@@ -27,9 +27,11 @@ public class OrganizacionServicio {
 
 
     // Obtener una organización por ID
-    public Optional<Organizacion> obtenerPorId(Integer id) {
-        return organizacionRepositorio.findById(id);
-    }
+   public Optional<Organizacion> obtenerPorId(Integer id) {
+       return organizacionRepositorio.findById(id);
+   }
+
+
 
     // Actualizar una organización
     public Organizacion actualizar(Integer id, Organizacion organizacionActualizada) {
