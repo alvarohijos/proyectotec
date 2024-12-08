@@ -20,7 +20,7 @@ public class Impacto {
     private Float satisfaccion;
     private String otrosIndicadores;
 
-    // Getters y Setters
+    // Getters y Setters de impactoprue
     public Integer getImpactoId() {
         return impactoId;
     }
